@@ -90,24 +90,33 @@
       <div class="modal-dialog">
 
         <div class="modal-header">
-          <h3>Create a Twit</h3>
+          <h3>New Bill</h3>
           <button type="button" class="modal-close-button">&times;</button>
         </div>
 
         <div class="modal-body">
           <div class="bill-input-element">
-            <label for="bill-text-input">Twit text</label>
+            <label for="bill-text-input">What was the bill?</label>
             <textarea id="bill-text-input"></textarea>
           </div>
           <div class="bill-input-element">
-            <label for="bill-attribution-input">Author</label>
+            <label for="bill-attribution-input">How much was it?</label>
             <input type="text" id="bill-attribution-input">
+          </div>
+          <div class="bill-input-element">
+            <label for="bill-payer">Who is paying the bill?</label>
+            <select>
+              <option value="volvo">Joe</option>
+              <option value="saab">John</option>
+              <option value="opel">Mary</option>
+              <option value="audi">Susan</option>
+            </select>
           </div>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="modal-cancel-button">Cancel</button>
-          <button type="button" class="modal-accept-button">Create Twit</button>
+          <button type="button" class="modal-accept-button">Create bill</button>
         </div>
 
       </div>

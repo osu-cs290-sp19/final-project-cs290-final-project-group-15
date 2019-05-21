@@ -1,23 +1,23 @@
-//=====Create Twit Button=====
-var createTwitButton = document.getElementById('create-twit-button');
+//=====Create bill Button=====
+var createbillButton = document.getElementById('create-bill-button');
 
-function createTwitClickListener(event) {
+function createbillClickListener(event) {
   var modalBackdrop = document.getElementById('modal-backdrop');
   modalBackdrop.classList.remove('hidden');
 
-  var createTwitModal = document.getElementById('create-twit-modal');
-  createTwitModal.classList.remove('hidden');
+  var createbillModal = document.getElementById('create-bill-modal');
+  createbillModal.classList.remove('hidden');
 }
 
-createTwitButton.addEventListener('click', createTwitClickListener);
+createbillButton.addEventListener('click', createbillClickListener);
 
 //=====Hide Modal=====
 function hideModal() {
   var modalBackdrop = document.getElementById('modal-backdrop');
   modalBackdrop.classList.add('hidden');
 
-  var createTwitModal = document.getElementById('create-twit-modal');
-  createTwitModal.classList.add('hidden');
+  var createbillModal = document.getElementById('create-bill-modal');
+  createbillModal.classList.add('hidden');
 }
 
 //=====Close Modal Button=====
@@ -38,88 +38,88 @@ function cancelModalButtonClickListener(event) {
 }
 cancelModalButton.addEventListener('click', cancelModalButtonClickListener);
 
-//=====Accept Twit Button=====
-var acceptTwitButton = document.getElementsByClassName('modal-accept-button')[0];
+//=====Accept bill Button=====
+var acceptbillButton = document.getElementsByClassName('modal-accept-button')[0];
 
-function acceptTwitButtonClickListener(event) {
-  if(!twitAlert()) {
-    var twit = createNewTwitElement();
-    document.getElementsByClassName('twit-container')[0].appendChild(twit);
+function acceptbillButtonClickListener(event) {
+  if(!billAlert()) {
+    var bill = createNewbillElement();
+    document.getElementsByClassName('bill-container')[0].appendChild(bill);
     hideModal();
     clearInput();
   }
 }
 
-acceptTwitButton.addEventListener('click', acceptTwitButtonClickListener);
+acceptbillButton.addEventListener('click', acceptbillButtonClickListener);
 
-//build new twit
-function createNewTwitElement() {
-  var newTwit = document.createElement('article');
-  newTwit.classList.add('twit');
+//build new bill
+function createNewbillElement() {
+  var newbill = document.createElement('article');
+  newbill.classList.add('bill');
 
   var text0 = document.createElement('text');
   var text2 = document.createElement('text');
   var text4 = document.createElement('text');
-  newTwit.appendChild(text0);
+  newbill.appendChild(text0);
 
   var icontext0 = document.createElement('text');
   var icontext2 = document.createElement('text');
 
-  var twitIconDiv = document.createElement('div');
-  var twitIcon = document.createElement('i');
-  twitIconDiv.classList.add('twit-icon');
-  twitIcon.classList.add('fa');
-  twitIcon.classList.add('fa-bullhorn');
-  twitIconDiv.appendChild(icontext0);
-  twitIconDiv.appendChild(twitIcon);
-  twitIconDiv.appendChild(icontext2);
-  newTwit.appendChild(twitIconDiv);
-  newTwit.appendChild(text2);
+  var billIconDiv = document.createElement('div');
+  var billIcon = document.createElement('i');
+  billIconDiv.classList.add('bill-icon');
+  billIcon.classList.add('fa');
+  billIcon.classList.add('fa-bullhorn');
+  billIconDiv.appendChild(icontext0);
+  billIconDiv.appendChild(billIcon);
+  billIconDiv.appendChild(icontext2);
+  newbill.appendChild(billIconDiv);
+  newbill.appendChild(text2);
 
   var contenttext0 = document.createElement('text');
   var contenttext2 = document.createElement('text');
   var contenttext4 = document.createElement('text');
 
-  var twitContentDiv = document.createElement('div');
-  var twitText = document.createElement('p');
-  var twitAuthor = document.createElement('p');
-  var twitAuthorLink = document.createElement('a');
-  twitContentDiv.classList.add('twit-content');
-  twitText.classList.add('twit-text');
-  twitAuthor.classList.add('twit-author');
-  twitAuthorLink.href = "#";
-  twitText.textContent = document.querySelector('textarea#twit-text-input').value;
-  twitAuthorLink.textContent = document.querySelector('input#twit-attribution-input').value;
-  twitAuthor.appendChild(twitAuthorLink);
-  twitContentDiv.appendChild(contenttext0);
-  twitContentDiv.appendChild(twitText);
-  twitContentDiv.appendChild(contenttext2);
-  twitContentDiv.appendChild(twitAuthor);
-  twitContentDiv.appendChild(contenttext4);
+  var billContentDiv = document.createElement('div');
+  var billText = document.createElement('p');
+  var billAuthor = document.createElement('p');
+  var billAuthorLink = document.createElement('a');
+  billContentDiv.classList.add('bill-content');
+  billText.classList.add('bill-text');
+  billAuthor.classList.add('bill-author');
+  billAuthorLink.href = "#";
+  billText.textContent = document.querySelector('textarea#bill-text-input').value;
+  billAuthorLink.textContent = document.querySelector('input#bill-attribution-input').value;
+  billAuthor.appendChild(billAuthorLink);
+  billContentDiv.appendChild(contenttext0);
+  billContentDiv.appendChild(billText);
+  billContentDiv.appendChild(contenttext2);
+  billContentDiv.appendChild(billAuthor);
+  billContentDiv.appendChild(contenttext4);
 
-  newTwit.appendChild(twitContentDiv);
+  newbill.appendChild(billContentDiv);
 
-  newTwit.appendChild(text4);
+  newbill.appendChild(text4);
 
-  return newTwit;
+  return newbill;
 }
 
 //=====Erase Input=====
 function clearInput() {
-  var twitTextInput = document.querySelector('textarea#twit-text-input');
-  twitTextInput.value = '';
+  var billTextInput = document.querySelector('textarea#bill-text-input');
+  billTextInput.value = '';
 
-  var twitAInput = document.querySelector('input#twit-attribution-input');
-  twitAInput.value = '';
+  var billAInput = document.querySelector('input#bill-attribution-input');
+  billAInput.value = '';
 }
 
-//=====Check Twit Entry=====
-function twitAlert() {
-  var twitTextInput = document.querySelector('textarea#twit-text-input');
-  var twitAInput = document.querySelector('input#twit-attribution-input');
+//=====Check bill Entry=====
+function billAlert() {
+  var billTextInput = document.querySelector('textarea#bill-text-input');
+  var billAInput = document.querySelector('input#bill-attribution-input');
 
-  if(!twitTextInput.value || !twitAInput.value) {
-    window.alert('Please fill out the twit text and twit author fields.');
+  if(!billTextInput.value || !billAInput.value) {
+    window.alert('Please fill out the bill text and bill author fields.');
     return true;
   }
   return false;
@@ -131,20 +131,20 @@ function searchClickListener(event) {
   searchInput = searchInput.toLowerCase();
   //console.log("search input: " + searchInput);
 
-  var allTwits = document.getElementsByClassName('twit');
-  //console.log(allTwits);
+  var allbills = document.getElementsByClassName('bill');
+  //console.log(allbills);
   var current = 0;
-  for(var i = allTwits.length-1; i >= 0; i--) {
+  for(var i = allbills.length-1; i >= 0; i--) {
     //console.log('i: ', i);
-    //console.log(allTwits[i].childNodes[3]);
-    var text = allTwits[i].childNodes[3].childNodes[1].textContent.toLowerCase();
-    var author = allTwits[i].childNodes[3].childNodes[3].textContent.toLowerCase();
+    //console.log(allbills[i].childNodes[3]);
+    var text = allbills[i].childNodes[3].childNodes[1].textContent.toLowerCase();
+    var author = allbills[i].childNodes[3].childNodes[3].textContent.toLowerCase();
     //console.log("text: " + text);
     //console.log("author: " + author);
     //console.log("text search: " + text.search(searchInput));
     if((text.search(searchInput) == -1) && (author.search(searchInput) == -1)) {
-      //console.log("removing child: ", allTwits[i]);
-      allTwits[i].remove();
+      //console.log("removing child: ", allbills[i]);
+      allbills[i].remove();
 
     }
   }
@@ -153,4 +153,3 @@ function searchClickListener(event) {
 
 var searchButton = document.getElementById('navbar-search-button');
 searchButton.addEventListener('click', searchClickListener);
-
