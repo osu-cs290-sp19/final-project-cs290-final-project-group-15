@@ -13,7 +13,7 @@ a {
   padding: 10px 20px;
   font-size: 30px;
   font-weight: 100;
-  background-color: #319df6;
+  background-color: coral;
   color: #fff;
 }
 
@@ -92,13 +92,13 @@ a:focus {
   outline: none;
 }
 
-.twit-container {
+.bill-container {
   margin: 50px 10%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.twit {
+.bill {
   flex: 0 1 28%;
   display: flex;
   margin: 2px;
@@ -108,26 +108,26 @@ a:focus {
   background-color: #fff;
 }
 
-.twit-icon {
+.bill-icon {
   font-size: 24px;
 }
 
-.twit-content {
+.bill-content {
   flex: 1 1 80%;
   margin-left: 10px;
 }
 
-.twit-content p {
+.bill-content p {
   margin: 0;
 }
 
-.twit-content .twit-author {
+.bill-content .bill-author {
   margin-top: 8px;
   text-align: right;
   font-weight: bold;
 }
 
-#create-twit-button {
+#create-bill-button {
   position: fixed;
   right: 30px;
   bottom: 30px;
@@ -142,8 +142,8 @@ a:focus {
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-#create-twit-button:hover,
-#create-twit-button:focus {
+#create-bill-button:hover,
+#create-bill-button:focus {
   right: 27px;
   bottom: 27px;
   height: 66px;
@@ -153,7 +153,7 @@ a:focus {
   background-color: #319df6;
 }
 
-#create-twit-button:focus {
+#create-bill-button:focus {
   outline: none;
 }
 
@@ -167,7 +167,7 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.85);
 }
 
-#create-twit-modal {
+#create-bill-modal {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -216,28 +216,28 @@ a:focus {
   padding: 20px;
 }
 
-.twit-input-element {
+.bill-input-element {
   display: flex;
   align-items: center;
   font-size: 20px;
   margin: 10px 0;
 }
 
-.twit-input-element label {
+.bill-input-element label {
   font-weight: 600;
   flex: 1 75px;
   margin-right: 10px;
 }
 
-.twit-input-element input,
-.twit-input-element textarea {
+.bill-input-element input,
+.bill-input-element textarea {
   flex: 6 200px;
   padding: 8px;
   font-size: 20px;
   border: 1px solid #aaa;
 }
 
-.twit-input-element textarea {
+.bill-input-element textarea {
   min-height: 64px;
 }
 
