@@ -4,6 +4,29 @@ body {
   background-color: #eee;
 }
 
+/**********************************
+  Sidebar
+**********************************/
+
+#sidebar {
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  background-color: coral;
+  color: white;
+  border-right: 1px solid black;
+}
+
+.sidebar-title {
+  margin-top: 15px;
+  text-decoration: underline;
+}
+
+.in-sidebar {
+  margin-left: 15px;
+  padding-left: 0px;
+}
+
 a {
   text-decoration: none;
 }
@@ -94,8 +117,14 @@ a:focus {
 
 .bill-container {
   margin: 50px 10%;
+  margin-left: 150px;     /* Make room for side bar */
   display: flex;
   flex-wrap: wrap;
+}
+
+
+main {
+  padding-left: 100px;  /* Push out from sidebar */
 }
 
 .bill {
