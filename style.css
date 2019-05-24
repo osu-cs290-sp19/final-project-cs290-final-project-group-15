@@ -29,6 +29,23 @@ body {
 
 a {
   text-decoration: none;
+  color: #343434;
+}
+
+a:hover,
+a:focus {
+  color: #319df6;
+}
+
+a:focus {
+  outline: none;
+}
+
+.person a {
+  color: white;
+}
+.person:hover a {
+  color: lightgray;
 }
 
 .site-title {
@@ -53,19 +70,6 @@ a {
 
 .navitem {
   display: inline-block;
-}
-
-a {
-  color: #343434;
-}
-
-a:hover,
-a:focus {
-  color: #319df6;
-}
-
-a:focus {
-  outline: none;
 }
 
 .navlink a {
