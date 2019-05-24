@@ -11,3 +11,6 @@ git push origin branch_name
      - branch_name must already exist
      
 then pull request your changes to master on GitHub
+
+
+git pull origin master: to update local master with remote master
