@@ -1,0 +1,13 @@
+HOW TO MAKE BRANCHES AND PUSH THEM
+
+git checkout -b new_branch_name: makes a new branch with name new_branch_name
+git branch: lists branches
+git checkout branch_to_switch_to
+
+**when making new files on the branch, commit before switching branches or they will be floating untracked files that any branch can access
+
+git push origin branch_name
+     - creates that branch with those changes on GitHub
+     - branch_name must already exist
+     
+then pull request your changes to master on GitHub
