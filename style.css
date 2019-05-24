@@ -13,7 +13,7 @@ a {
   padding: 10px 20px;
   font-size: 30px;
   font-weight: 100;
-  background-color: coral;
+  background-color: #319df6;
   color: #fff;
 }
 
@@ -93,8 +93,9 @@ a:focus {
 }
 
 .bill-container {
-  margin: 50px 10%;
-  display: flex;
+//  margin: 50px 10%;
+  margin: 20px 50px 20px 250px;
+  //display: flex;
   flex-wrap: wrap;
 }
 
@@ -136,7 +137,7 @@ a:focus {
   border: none;
   border-radius: 30px;
   font-size: 30px;
-  background-color: #ff1010;
+  background-color: green;
   color: #fff;
   cursor: pointer;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
@@ -150,7 +151,7 @@ a:focus {
   width: 66px;
   border-radius: 33px;
   font-size: 36px;
-  background-color: #319df6;
+  background-color: coral;
 }
 
 #create-bill-button:focus {
@@ -270,3 +271,58 @@ a:focus {
 .modal-footer .modal-accept-button:hover {
   background-color: #087dde;
 }
+
+
+
+
+.sidenav {
+  height: 85%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 10px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+h1.addNew {
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+}
+h1.Roommates{
+  text-decoration: underline;
+  margin-left: 5px;
+  color: black;
+  font-size: 24px:
+  position: absolute;
+  top: 30px;
+}
+#create-roommate-button {
+  position: fixed;
+  left: 0px;
+  bottom: 30px;
+  height: 60px;
+  width: 180px;
+  border: none;
+  border-radius: 30px;
+  font-size: 30px;
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);

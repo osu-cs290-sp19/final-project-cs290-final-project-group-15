@@ -3,7 +3,7 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Lickity-Split!</title>
+    <title>Lickety-Split!</title>
 
     <!-- This is a 3rd-party stylesheet to make available the font family to be used for this page ("Roboto"). -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
@@ -18,10 +18,19 @@
   </head>
 
   <body>
+    <div class="sidenav">
+      <h1 class="Roommates">Roommates</h1>
+      <a href="#Joe">Joe</a>
+      <a href="#John">John</a>
+      <a href="#Mary">Mary</a>
+      <a href="#Susan">Susan</a>
+      <button type="button" id="create-roommate-button"><i class="create-roommate-button"></i></button>
+      <h1 class = addNew>Add New Roommate</h1>
+    </div>
 
     <header>
       <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
-      <a href="#"><h1 class="site-title">Lickity-Split!</h1></a>
+      <a href="#"><h1 class="site-title">Lickety-Split!</h1></a>
 
       <nav class="navbar">
         <ul class="navlist">
@@ -40,42 +49,42 @@
 
       <article class="bill">
         <div class="bill-icon">
-          <i class="fas fa-bullhorn"></i>
+          <i class="fas fa-file-invoice-dollar"></i>
         </div>
         <div class="bill-content">
           <p class="bill-text">
-            Sitting in web dev... This class is so awesome!
+            John paid $43.00 for electric.
           </p>
           <p class="bill-author">
-            <a href="#">CSMajor2019</a>
+            <a href="#">John</a>
           </p>
         </div>
       </article>
 
       <article class="bill">
         <div class="bill-icon">
-          <i class="fas fa-bullhorn"></i>
+          <i class="fas fa-file-invoice-dollar"></i>
         </div>
         <div class="bill-content">
           <p class="bill-text">
-            Huh?
+            Susan paid $73.42 for water.
           </p>
           <p class="bill-author">
-            <a href="#">ConfusedTweeterer</a>
+            <a href="#">Susan</a>
           </p>
         </div>
       </article>
 
       <article class="bill">
         <div class="bill-icon">
-          <i class="fas fa-bullhorn"></i>
+          <i class="fas fa-file-invoice-dollar"></i>
         </div>
         <div class="bill-content">
           <p class="bill-text">
-            Why did the calf cross the road?
+            Mary paid $62.00 for gas.
           </p>
           <p class="bill-author">
-            <a href="#">Setup</a>
+            <a href="#">Mary</a>
           </p>
         </div>
       </article>
@@ -83,7 +92,7 @@
 
     </main>
 
-    <button type="button" id="create-bill-button"><i class="fas fa-bullhorn"></i></button>
+    <button type="button" id="create-bill-button"><i class="fas fa-file-invoice-dollar"></i></button>
 
     <div id="modal-backdrop" class="hidden"></div>
     <div id="create-bill-modal" class="hidden">
@@ -106,10 +115,10 @@
           <div class="bill-input-element">
             <label for="bill-payer">Who is paying the bill?</label>
             <select>
-              <option value="volvo">Joe</option>
-              <option value="saab">John</option>
-              <option value="opel">Mary</option>
-              <option value="audi">Susan</option>
+              <option value="Joe">Joe</option>
+              <option value="John">John</option>
+              <option value="Mary">Mary</option>
+              <option value="Susan">Susan</option>
             </select>
           </div>
         </div>
