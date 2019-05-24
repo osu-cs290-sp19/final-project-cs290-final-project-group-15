@@ -69,7 +69,7 @@ function createNewbillElement() {
   var billIcon = document.createElement('i');
   billIconDiv.classList.add('bill-icon');
   billIcon.classList.add('fa');
-  billIcon.classList.add('fa-bullhorn');
+  billIcon.classList.add('fa-file-invoice-dollar');
   billIconDiv.appendChild(icontext0);
   billIconDiv.appendChild(billIcon);
   billIconDiv.appendChild(icontext2);
