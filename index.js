@@ -153,3 +153,14 @@ function searchClickListener(event) {
 
 var searchButton = document.getElementById('navbar-search-button');
 searchButton.addEventListener('click', searchClickListener);
+
+
+
+//Your Page
+
+function yourPageListener(event) {
+
+}
+
+var yourPage = document.getElementsByClassName('yourpage')[0];
+console.log(yourPage);
