@@ -27,6 +27,7 @@ h1 {
 
 .sidebar-title {
   margin-top: 15px;
+
   margin-bottom: 7px;
   margin-left: 15px;
   font-size: 20px;
@@ -49,7 +50,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #coral;
+  color: coral;
 }
 
 a:focus {
