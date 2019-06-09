@@ -2,6 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var express = require('express');
+
 var exphbs = require('express-handlebars');
 
 var app = express();
@@ -31,4 +32,3 @@ app.get('*', function (req, res, next) {
 
 app.listen(port, function() {
   console.log("==Server listening on port " + port);
-});

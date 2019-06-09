@@ -69,7 +69,7 @@ function createNewbillElement() {
   var billIcon = document.createElement('i');
   billIconDiv.classList.add('bill-icon');
   billIcon.classList.add('fa');
-  billIcon.classList.add('fa-file-invoice-dollar');
+  billIcon.classList.add('fa-bullhorn');
   billIconDiv.appendChild(icontext0);
   billIconDiv.appendChild(billIcon);
   billIconDiv.appendChild(icontext2);
@@ -153,14 +153,3 @@ function searchClickListener(event) {
 
 var searchButton = document.getElementById('navbar-search-button');
 searchButton.addEventListener('click', searchClickListener);
-
-
-
-//Your Page
-
-function yourPageListener(event) {
-
-}
-
-var yourPage = document.getElementsByClassName('yourpage')[0];
-console.log(yourPage);

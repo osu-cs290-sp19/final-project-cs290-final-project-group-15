@@ -14,3 +14,5 @@ then pull request your changes to master on GitHub
 
 
 git pull origin master: to update local master with remote master
+
+git branch -D branch_name: deletes local branch
