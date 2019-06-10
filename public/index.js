@@ -1,4 +1,67 @@
-//=====Create bill Button=====
+owedToMe = 0;
+whoOwesWhat = [0,0];
+who = ['That one lady', 'Creepy landlord'];
+each = 0;
+
+var createpersonButton = document.getElementsByClassName('add-button')[0];
+
+function createpersonClickListener(event) {
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  modalBackdrop.classList.remove('hidden');
+  var createpersonModal = document.getElementById('create-person-modal');
+  createpersonModal.classList.remove('hidden');
+}
+createpersonButton.addEventListener('click', createpersonClickListener);
+function hideModal() {
+  var createpersonModal = document.getElementById('create-person-modal');
+  createpersonModal.classList.add('hidden');
+}
+var closeModalButton = document.getElementsByClassName('person-modal-close-button')[0];
+function closeModalButtonClickListener(event) {
+  hideModal();
+  clearInput();
+}
+closeModalButton.addEventListener('click', closeModalButtonClickListener);
+//=====Cancel Modal Button=====
+var cancelModalButton = document.getElementsByClassName('person-modal-cancel-button')[0];
+
+function cancelModalButtonClickListener(event) {
+  hideModal();
+  clearInput();
+}
+
+
+cancelModalButton.addEventListener('click', cancelModalButtonClickListener);
+
+
+var acceptpersonButton = document.getElementsByClassName('person-modal-accept-button')[0];
+
+function acceptpersonButtonClickListener(event) {
+   if(!personAlert()) {
+    var person = createNewpersonElement();
+    document.getElementsByClassName('in-sidebar person')[0].appendChild(person);
+    hideModal();
+    clearInput();
+   }
+}
+
+ acceptpersonButton.addEventListener('click', acceptpersonButtonClickListener);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var createbillButton = document.getElementById('create-bill-button');
 
 function createbillClickListener(event) {
@@ -10,13 +73,14 @@ function createbillClickListener(event) {
 }
 
 createbillButton.addEventListener('click', createbillClickListener);
-
 //=====Hide Modal=====
 function hideModal() {
   var modalBackdrop = document.getElementById('modal-backdrop');
   modalBackdrop.classList.add('hidden');
 
   var createbillModal = document.getElementById('create-bill-modal');
+  createbillModal.classList.add('hidden');
+  var createbillModal = document.getElementById('create-person-modal');
   createbillModal.classList.add('hidden');
 }
 
@@ -52,6 +116,17 @@ function acceptbillButtonClickListener(event) {
 
 acceptbillButton.addEventListener('click', acceptbillButtonClickListener);
 
+function createNewpersonElement() {
+  var newperson = document.createElement('li');
+  newperson.classList.add('in-sidebar.person');
+  personName = document.createElement('text');
+  personName.textContent = document.querySelector('textarea#person-name-input').value;
+  newperson.appendChild(personName);
+  who.push(document.querySelector('textarea#person-name-input').value);
+  whoOwesWhat.push(0);
+  console.log(who);
+  return newperson;
+}
 //build new bill
 function createNewbillElement() {
   var newbill = document.createElement('article');
@@ -90,6 +165,7 @@ function createNewbillElement() {
   billAuthorLink.href = "#";
   billText.textContent = document.querySelector('textarea#bill-text-input').value;
   billAuthorLink.textContent = document.querySelector('input#bill-attribution-input').value;
+  //billAuthorLink.textContent = document.querySelector('select#bill-input-element');
   billAuthor.appendChild(billAuthorLink);
   billContentDiv.appendChild(contenttext0);
   billContentDiv.appendChild(billText);
@@ -101,12 +177,26 @@ function createNewbillElement() {
 
   newbill.appendChild(text4);
 
+  owedToMe = owedToMe + parseInt(billAuthorLink.textContent);
+  //owedToMe = billAuthorLink;
+  console.log(owedToMe);
+  // p = document.getElementById("personSelect");
+  // if(p.options[p.selectedIndex].value == 'You'){
+  //   owedToMe = owedToMe +
+  // }
+  each = owedToMe/ (whoOwesWhat.length + 1);
+  for(var i = 0; i < whoOwesWhat.length; i++){
+    whoOwesWhat[i] = whoOwesWhat[i] + each;
+    console.log('Your roommate, ' + who[i] + ', owes you ' + whoOwesWhat[i].toFixed(2) + ' dollars.');
+  }
   return newbill;
 }
 
 //=====Erase Input=====
 function clearInput() {
   var billTextInput = document.querySelector('textarea#bill-text-input');
+  billTextInput.value = '';
+  var billTextInput = document.querySelector('textarea#person-name-input');
   billTextInput.value = '';
 
   var billAInput = document.querySelector('input#bill-attribution-input');
@@ -124,7 +214,15 @@ function billAlert() {
   }
   return false;
 }
+function personAlert() {
+  var personNameInput = document.querySelector('textarea#person-name-input');
 
+  if(!personNameInput.value) {
+    window.alert('Please fill out the person name field.');
+    return true;
+  }
+  return false;
+}
 //=====Search=====
 function searchClickListener(event) {
   var searchInput = document.getElementById('navbar-search-input').value;
