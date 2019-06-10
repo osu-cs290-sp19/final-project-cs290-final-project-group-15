@@ -1,6 +1,6 @@
 owedToMe = 0;
-whoOwesWhat = [0,0];
-who = ['That one lady', 'Creepy landlord'];
+whoOwesWhat = [0,0,0];
+who = ['Lane', 'Jaelyn', 'Ryan'];
 each = 0;
 
 var createpersonButton = document.getElementsByClassName('add-button')[0];
@@ -144,7 +144,7 @@ function createNewbillElement() {
   var billIcon = document.createElement('i');
   billIconDiv.classList.add('bill-icon');
   billIcon.classList.add('fa');
-  billIcon.classList.add('fa-bullhorn');
+  billIcon.classList.add('fa-file-invoice-dollar');
   billIconDiv.appendChild(icontext0);
   billIconDiv.appendChild(billIcon);
   billIconDiv.appendChild(icontext2);
@@ -186,7 +186,7 @@ function createNewbillElement() {
   // }
   each = owedToMe/ (whoOwesWhat.length + 1);
   for(var i = 0; i < whoOwesWhat.length; i++){
-    whoOwesWhat[i] = whoOwesWhat[i] + each;
+    whoOwesWhat[i] =  each;
     console.log('Your roommate, ' + who[i] + ', owes you ' + whoOwesWhat[i].toFixed(2) + ' dollars.');
   }
   return newbill;
