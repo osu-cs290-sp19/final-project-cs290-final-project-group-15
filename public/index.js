@@ -1,4 +1,67 @@
-//=====Create bill Button=====
+owedToMe = 0;
+whoOwesWhat = [0,0];
+who = ['That one lady', 'Creepy landlord'];
+each = 0;
+
+var createpersonButton = document.getElementsByClassName('add-button')[0];
+
+function createpersonClickListener(event) {
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  modalBackdrop.classList.remove('hidden');
+  var createpersonModal = document.getElementById('create-person-modal');
+  createpersonModal.classList.remove('hidden');
+}
+createpersonButton.addEventListener('click', createpersonClickListener);
+function hideModal() {
+  var createpersonModal = document.getElementById('create-person-modal');
+  createpersonModal.classList.add('hidden');
+}
+var closeModalButton = document.getElementsByClassName('person-modal-close-button')[0];
+function closeModalButtonClickListener(event) {
+  hideModal();
+  clearInput();
+}
+closeModalButton.addEventListener('click', closeModalButtonClickListener);
+//=====Cancel Modal Button=====
+var cancelModalButton = document.getElementsByClassName('person-modal-cancel-button')[0];
+
+function cancelModalButtonClickListener(event) {
+  hideModal();
+  clearInput();
+}
+
+
+cancelModalButton.addEventListener('click', cancelModalButtonClickListener);
+
+
+var acceptpersonButton = document.getElementsByClassName('person-modal-accept-button')[0];
+
+function acceptpersonButtonClickListener(event) {
+   if(!personAlert()) {
+    var person = createNewpersonElement();
+    document.getElementsByClassName('in-sidebar person')[0].appendChild(person);
+    hideModal();
+    clearInput();
+   }
+}
+
+ acceptpersonButton.addEventListener('click', acceptpersonButtonClickListener);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var createbillButton = document.getElementById('create-bill-button');
 
 function createbillClickListener(event) {
@@ -10,13 +73,14 @@ function createbillClickListener(event) {
 }
 
 createbillButton.addEventListener('click', createbillClickListener);
-
 //=====Hide Modal=====
 function hideModal() {
   var modalBackdrop = document.getElementById('modal-backdrop');
   modalBackdrop.classList.add('hidden');
 
   var createbillModal = document.getElementById('create-bill-modal');
+  createbillModal.classList.add('hidden');
+  var createbillModal = document.getElementById('create-person-modal');
   createbillModal.classList.add('hidden');
 }
 
@@ -43,10 +107,7 @@ var acceptbillButton = document.getElementsByClassName('modal-accept-button')[0]
 
 function acceptbillButtonClickListener(event) {
   if(!billAlert()) {
-    var text = document.querySelector('textarea#bill-text-input').value.trim();
-    var author = document.querySelector('input#bill-attribution-input').value;
-    var amount = 500;
-    var bill = createNewbillElement(text,author,amount);
+    var bill = createNewbillElement();
     document.getElementsByClassName('bill-container')[0].appendChild(bill);
     hideModal();
     clearInput();
@@ -55,64 +116,18 @@ function acceptbillButtonClickListener(event) {
 
 acceptbillButton.addEventListener('click', acceptbillButtonClickListener);
 
+function createNewpersonElement() {
+  var newperson = document.createElement('li');
+  newperson.classList.add('in-sidebar.person');
+  personName = document.createElement('text');
+  personName.textContent = document.querySelector('textarea#person-name-input').value;
+  newperson.appendChild(personName);
+  who.push(document.querySelector('textarea#person-name-input').value);
+  whoOwesWhat.push(0);
+  console.log(who);
+  return newperson;
+}
 //build new bill
-<<<<<<< HEAD:index.js
-function createNewbillElement(bill-text,bill-author,bill-amount) {
-  var newBillContext = {
-    text: billText,
-    author: bill-author,
-    amount: bill-amount
-  };
-
-  var photoCardHTML = Handlebars.templates.'bill-template'(newBillContext);
-  console.log(photoCardHTML);
-  // var newbill = document.createElement('article');
-  // newbill.classList.add('bill');
-  //
-  // var text0 = document.createElement('text');
-  // var text2 = document.createElement('text');
-  // var text4 = document.createElement('text');
-  // newbill.appendChild(text0);
-  //
-  // var icontext0 = document.createElement('text');
-  // var icontext2 = document.createElement('text');
-  //
-  // var billIconDiv = document.createElement('div');
-  // var billIcon = document.createElement('i');
-  // billIconDiv.classList.add('bill-icon');
-  // billIcon.classList.add('fa');
-  // billIcon.classList.add('fa-bullhorn');
-  // billIconDiv.appendChild(icontext0);
-  // billIconDiv.appendChild(billIcon);
-  // billIconDiv.appendChild(icontext2);
-  // newbill.appendChild(billIconDiv);
-  // newbill.appendChild(text2);
-  //
-  // var contenttext0 = document.createElement('text');
-  // var contenttext2 = document.createElement('text');
-  // var contenttext4 = document.createElement('text');
-  //
-  // var billContentDiv = document.createElement('div');
-  // var billText = document.createElement('p');
-  // var billAuthor = document.createElement('p');
-  // var billAuthorLink = document.createElement('a');
-  // billContentDiv.classList.add('bill-content');
-  // billText.classList.add('bill-text');
-  // billAuthor.classList.add('bill-author');
-  // billAuthorLink.href = "#";
-  // billText.textContent = document.querySelector('textarea#bill-text-input').value;
-  // billAuthorLink.textContent = document.querySelector('input#bill-attribution-input').value;
-  // billAuthor.appendChild(billAuthorLink);
-  // billContentDiv.appendChild(contenttext0);
-  // billContentDiv.appendChild(billText);
-  // billContentDiv.appendChild(contenttext2);
-  // billContentDiv.appendChild(billAuthor);
-  // billContentDiv.appendChild(contenttext4);
-  //
-  // newbill.appendChild(billContentDiv);
-  //
-  // newbill.appendChild(text4);
-=======
 function createNewbillElement() {
   var newbill = document.createElement('article');
   newbill.classList.add('bill');
@@ -129,7 +144,7 @@ function createNewbillElement() {
   var billIcon = document.createElement('i');
   billIconDiv.classList.add('bill-icon');
   billIcon.classList.add('fa');
-  billIcon.classList.add('fa-file-invoice-dollar');
+  billIcon.classList.add('fa-bullhorn');
   billIconDiv.appendChild(icontext0);
   billIconDiv.appendChild(billIcon);
   billIconDiv.appendChild(icontext2);
@@ -150,6 +165,7 @@ function createNewbillElement() {
   billAuthorLink.href = "#";
   billText.textContent = document.querySelector('textarea#bill-text-input').value;
   billAuthorLink.textContent = document.querySelector('input#bill-attribution-input').value;
+  //billAuthorLink.textContent = document.querySelector('select#bill-input-element');
   billAuthor.appendChild(billAuthorLink);
   billContentDiv.appendChild(contenttext0);
   billContentDiv.appendChild(billText);
@@ -160,14 +176,27 @@ function createNewbillElement() {
   newbill.appendChild(billContentDiv);
 
   newbill.appendChild(text4);
->>>>>>> 4cb8a733a2811da7665e3923e1c5408d8b5dbc74:public/index.js
 
+  owedToMe = owedToMe + parseInt(billAuthorLink.textContent);
+  //owedToMe = billAuthorLink;
+  console.log(owedToMe);
+  // p = document.getElementById("personSelect");
+  // if(p.options[p.selectedIndex].value == 'You'){
+  //   owedToMe = owedToMe +
+  // }
+  each = owedToMe/ (whoOwesWhat.length + 1);
+  for(var i = 0; i < whoOwesWhat.length; i++){
+    whoOwesWhat[i] = whoOwesWhat[i] + each;
+    console.log('Your roommate, ' + who[i] + ', owes you ' + whoOwesWhat[i].toFixed(2) + ' dollars.');
+  }
   return newbill;
 }
 
 //=====Erase Input=====
 function clearInput() {
   var billTextInput = document.querySelector('textarea#bill-text-input');
+  billTextInput.value = '';
+  var billTextInput = document.querySelector('textarea#person-name-input');
   billTextInput.value = '';
 
   var billAInput = document.querySelector('input#bill-attribution-input');
@@ -185,7 +214,15 @@ function billAlert() {
   }
   return false;
 }
+function personAlert() {
+  var personNameInput = document.querySelector('textarea#person-name-input');
 
+  if(!personNameInput.value) {
+    window.alert('Please fill out the person name field.');
+    return true;
+  }
+  return false;
+}
 //=====Search=====
 function searchClickListener(event) {
   var searchInput = document.getElementById('navbar-search-input').value;
@@ -214,14 +251,3 @@ function searchClickListener(event) {
 
 var searchButton = document.getElementById('navbar-search-button');
 searchButton.addEventListener('click', searchClickListener);
-
-
-
-//Your Page
-
-function yourPageListener(event) {
-
-}
-
-var yourPage = document.getElementsByClassName('yourpage')[0];
-console.log(yourPage);

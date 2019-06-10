@@ -39,9 +39,9 @@
     <div id = 'sidebar'>
       <h1 class = 'in-sidebar sidebar-title'>People</h1>
       <ul class = 'in-sidebar'>
-        <li class = 'in-sidebar person'><a href='#'>John Smith</a></li>
-        <li class = 'in-sidebar person'><a href='#'>That one lady</a></li>
-        <li class = 'in-sidebar person'><a href='#'>Creepy landlord</a></li>
+        <li class = 'in-sidebar person'><a>You</a></li>
+        <li class = 'in-sidebar person'><a>That one lady</a></li>
+        <li class = 'in-sidebar person'><a>Creepy landlord</a></li>
       </ul>
         <button class="add-button">Add person</button>
     </div>
@@ -117,10 +117,10 @@
           </div>
           <div class="bill-input-element">
             <label for="bill-payer">Who is paying the bill?</label>
-            <select>
-              <option value="volvo">John Smith</option>
-              <option value="saab">That one lady</option>
-              <option value="opel">Creepy landlord</option>
+            <select id = "personSelect">
+              <option value="You">You</option>
+              <option value="That one lady">That one lady</option>
+              <option value="Creepy landlord">Creepy landlord</option>
             </select>
           </div>
         </div>
@@ -132,6 +132,31 @@
 
       </div>
     </div>
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="create-person-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>New Person</h3>
+          <button type="button" class="person-modal-close-button">&times;</button>
+        </div>
+
+
+    <div class="person-modal-body">
+      <div class="person-input-element">
+        <label for="person-name-input">What is the new person's name?</label>
+        <textarea id="person-name-input"></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="person-modal-cancel-button">Cancel</button>
+      <button type="button" class="person-modal-accept-button">Create new person</button>
+    </div>
+
+  </div>
+</div>
 
   </body>
 

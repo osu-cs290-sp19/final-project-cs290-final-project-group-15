@@ -1,5 +1,5 @@
 body {
-  font-family: Roboto, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   background-color: #eee;
 }
@@ -200,6 +200,15 @@ main {
 }
 
 #create-bill-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+}
+#create-person-modal {
   position: fixed;
   top: 0;
   bottom: 0;
