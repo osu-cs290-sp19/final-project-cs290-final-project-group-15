@@ -6,7 +6,8 @@
     <title>Lickity-Split!</title>
 
     <!-- This is a 3rd-party stylesheet to make available the font family to be used for this page ("Roboto"). -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- This 3rd-party stylesheet incorporates SVG icons from Font Awesome: http://fontawesome.com/ -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
@@ -26,7 +27,8 @@
       <nav class="navbar">
         <ul class="navlist">
           <li class="navitem navlink active"><a href="#">Home</a></li>
-          <li class="navitem navlink yourpage"><a href="#">Your Page</a></li>
+          <li class="navitem navlink" id="yourpage"><a href="#">Your Page</a></li>
+
           <!-- <li class="navitem navlink"><a href="#">About Us</a></li> -->
           <li class="navitem navbar-search">
             <input type="text" id="navbar-search-input" placeholder="Search...">
@@ -37,14 +39,18 @@
     </header>
 
     <div id = 'sidebar'>
-      <h1 class = 'in-sidebar sidebar-title'>People</h1>
+
+      <h2 class = 'in-sidebar sidebar-title'>People</h2>
+
       <ul class = 'in-sidebar'>
         <li class = 'in-sidebar person'><a>You</a></li>
         <li class = 'in-sidebar person'><a>Lane</a></li>
         <li class = 'in-sidebar person'><a>Jaelyn</a></li>
         <li class = 'in-sidebar person'><a>Ryan</a></li>
       </ul>
-        <button class="add-button">Add person</button>
+
+        <button class="add-button">Add Person</button>
+
     </div>
 
     <main class="bill-container">
