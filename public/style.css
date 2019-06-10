@@ -1,7 +1,18 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family: 'Nunito', Helvetica, sans-serif;
+
   margin: 0;
   background-color: #eee;
+}
+
+p {
+  font-weight: 400;
+}
+
+h1 {
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 /**********************************
@@ -10,21 +21,28 @@ body {
 
 #sidebar {
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: 100%;
   background-color: coral;
   color: white;
-  border-right: 1px solid black;
 }
 
 .sidebar-title {
   margin-top: 15px;
-  text-decoration: underline;
+
+  margin-bottom: 7px;
+  margin-left: 15px;
+  font-size: 20px;
 }
 
 .in-sidebar {
-  margin-left: 15px;
+  margin-top: 7px;
+  margin-left: 10px;
   padding-left: 0px;
+}
+
+.in-sidebar.person {
+  font-size: 17px;
 }
 
 a {
@@ -52,7 +70,7 @@ a:focus {
   margin: 0;
   padding: 10px 20px;
   font-size: 30px;
-  font-weight: 100;
+  font-weight: 700;
   background-color: coral;
   color: #fff;
 }
@@ -75,10 +93,11 @@ a:focus {
 .navlink a {
   padding: 8px 10px;
   display: inline-block;
+  font-weight: 700px;
 }
 
 .navlink.active {
-  box-shadow: inset 0 -3px #1699ba;
+  box-shadow: inset 0 -3px #319df6;
 }
 
 .navbar-search {
@@ -317,7 +336,7 @@ main {
   left: 15px;
   bottom: 30px;
   height: 60px;
-  width: 120px;
+  width: 160px;
   border: none;
   border-radius: 30px;
   font-size: 20px;
