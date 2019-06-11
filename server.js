@@ -12,6 +12,8 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
+
 
 var port = process.env.PORT || 3004;
 
@@ -34,13 +36,21 @@ app.get('/', function (req, res, next) {
 
 app.post('/addBill', function (req, res, next) {
   console.log("/addBill");
-  if (req.body && req.body.url && req.body.caption) {
+  console.log("req.body.description: " + req.body.description);
+  if (req.body && req.body.description && req.body.amount && req.body.split) {
+    console.log("if is true");
     var collection = db.collection('bills');
     var bill = {
       description: req.body.description,
-      amount: req.body.amount
+      amount: req.body.amount,
+      split: req.body.split
     };
-    collection.insertOne(bill, function (err, result) {
+    console.log("bill: " + bill);
+    collection.insertOne({
+      description: req.body.description,
+      amount: req.body.amount,
+      split: req.body.split
+    }, function (err, result) {
         if (err) {
           res.status(500).send({
             error: "Error inserting photo into DB"
@@ -51,20 +61,27 @@ app.post('/addBill', function (req, res, next) {
         }
       }
     );
+    console.log("bills collection: " + collection);
   } else {
-    res.status(400).send("Request needs a body with a URL and caption");
+    res.status(400).send("Request needs a body with a description and amount");
   }
 });
 
 app.post('/addPerson', function (req, res, next) {
     console.log("/addPerson");
-  if (req.body && req.body.url && req.body.caption) {
+    console.log(req.body);
+
+  if (req.body && req.body.name && req.body.owe == 0) {
     var collection = db.collection('people');
     var person = {
       name: req.body.name,
       owe: req.body.owe
     };
-    collection.insertOne(person, function (err, result) {
+    console.log("person: " + person);
+    collection.insertOne({
+      name: req.body.name,
+      owe: req.body.owe
+    }, function (err, result) {
         if (err) {
           res.status(500).send({
             error: "Error inserting photo into DB"
@@ -76,7 +93,7 @@ app.post('/addPerson', function (req, res, next) {
       }
     );
   } else {
-    res.status(400).send("Request needs a body with a URL and caption");
+    res.status(400).send("Request needs a body with a name and amount owed");
   }
 });
 

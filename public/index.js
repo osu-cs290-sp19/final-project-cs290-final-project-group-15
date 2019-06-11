@@ -33,21 +33,47 @@ function cancelModalButtonClickListener(event) {
 
 cancelModalButton.addEventListener('click', cancelModalButtonClickListener);
 
-
+//Accept Add Person Button
 var acceptpersonButton = document.getElementsByClassName('person-modal-accept-button')[0];
 
 function acceptpersonButtonClickListener(event) {
    if(!personAlert()) {
-    var person = createNewpersonElement();
-    document.getElementsByClassName('in-sidebar person')[0].appendChild(person);
+     var name = document.querySelector('textarea#person-name-input').value;
+    console.log("name: " + name);
+    var personContext = {
+      name: name,
+      owe: 0
+    }
+
+    var postRequest = new XMLHttpRequest();
+    var requestURL = '/addPerson';
+    postRequest.open('POST', requestURL);
+
+    var requestBody = JSON.stringify(personContext);
+    console.log("stringify");
+    console.log("requestbody: " + requestBody);
+
+    postRequest.addEventListener('load', function (event) {
+      if(0 === 0) {
+        console.log("load and 200");
+        var person = createNewpersonElement(name);
+        console.log("person: " + person);
+        document.getElementsByClassName('in-sidebar person')[0].appendChild(person);
+
+      } else {
+        alert("error storing bill");
+      }
+    });
+
+    postRequest.setRequestHeader('Content-Type', 'application/json');
+    postRequest.send(requestBody);
+
     hideModal();
     clearInput();
    }
 }
 
  acceptpersonButton.addEventListener('click', acceptpersonButtonClickListener);
-
-
 
 
 
@@ -109,7 +135,12 @@ var acceptbillButton = document.getElementsByClassName('modal-accept-button')[0]
 function acceptbillButtonClickListener(event) {
   if(!billAlert()) {
 
-    var billContext = insertNewbillElement();
+    var billContext = {
+      description: document.querySelector('textarea#bill-text-input').value,
+      amount: document.querySelector('input#bill-attribution-input').value,
+      split: calcSplit()
+    }; //= insertNewbillElement();
+
     //document.getElementsByClassName('bill-container')[0].appendChild(bill);
     console.log("billContext: " + billContext);
     var postRequest = new XMLHttpRequest();
@@ -119,9 +150,14 @@ function acceptbillButtonClickListener(event) {
     var requestBody = JSON.stringify(billContext);
     console.log("stringify");
     console.log("requestbody: " + requestBody);
-    postRequest.addEventListener('load', function (event) {
-      if(event.target.status === 200) {
 
+    postRequest.addEventListener('load', function (event) {
+      if(0 === 0) {
+        console.log("load and 200");
+        var billHTML = Handlebars.templates.bill_template(billContext);
+        console.log("billhtml: " + billHTML);
+        var billContainer = document.getElementsByClassName("bill-container")[0];
+        billContainer.insertAdjacentHTML('beforeend', billHTML);
       } else {
         alert("error storing bill");
       }
@@ -137,91 +173,36 @@ function acceptbillButtonClickListener(event) {
 
 acceptbillButton.addEventListener('click', acceptbillButtonClickListener);
 
-function createNewpersonElement() {
+function createNewpersonElement(name) {
   var newperson = document.createElement('li');
   newperson.classList.add('in-sidebar.person');
   personName = document.createElement('text');
-  personName.textContent = document.querySelector('textarea#person-name-input').value;
+  //var name = document.querySelector('textarea#person-name-input').value;
+  console.log("name / createnewperson : " + name);
+  personName.textContent = name;
   newperson.appendChild(personName);
-  who.push(document.querySelector('textarea#person-name-input').value);
+
+  who.push(name);
   whoOwesWhat.push(0);
   console.log(who);
   return newperson;
 }
 //build new bill
-function insertNewbillElement() {
-    console.log("insertNewbillElement");
-  var billContext = {
-    description: document.querySelector('textarea#bill-text-input').value,
-    amount: document.querySelector('input#bill-attribution-input').value
-  }
+function calcSplit() {
 
-  var billHTML = Handlebars.templates.bill_template(billContext);
-  console.log("billhtml: " + billHTML);
-  var billContainer = document.getElementsByClassName("bill-container")[0];
-  billContainer.insertAdjacentHTML('beforeend', billHTML);
+    var billAuthorLink = document.createElement('a');
+    billAuthorLink.textContent = document.querySelector('input#bill-attribution-input').value;
 
-  // var newbill = document.createElement('article');
-  // newbill.classList.add('bill');
-  //
-  // var text0 = document.createElement('text');
-  // var text2 = document.createElement('text');
-  // var text4 = document.createElement('text');
-  // newbill.appendChild(text0);
-  //
-  // var icontext0 = document.createElement('text');
-  // var icontext2 = document.createElement('text');
-  //
-  // var billIconDiv = document.createElement('div');
-  // var billIcon = document.createElement('i');
-  // billIconDiv.classList.add('bill-icon');
-  // billIcon.classList.add('fa');
-  // billIcon.classList.add('fa-bullhorn');
-  // billIconDiv.appendChild(icontext0);
-  // billIconDiv.appendChild(billIcon);
-  // billIconDiv.appendChild(icontext2);
-  // newbill.appendChild(billIconDiv);
-  // newbill.appendChild(text2);
-  //
-  // var contenttext0 = document.createElement('text');
-  // var contenttext2 = document.createElement('text');
-  // var contenttext4 = document.createElement('text');
-  //
-  // var billContentDiv = document.createElement('div');
-  // var billText = document.createElement('p');
-  // var billAuthor = document.createElement('p');
-  var billAuthorLink = document.createElement('a');
-  // billContentDiv.classList.add('bill-content');
-  // billText.classList.add('bill-text');
-  // billAuthor.classList.add('bill-author');
-  // billAuthorLink.href = "#";
-  // billText.textContent = document.querySelector('textarea#bill-text-input').value;
-  billAuthorLink.textContent = document.querySelector('input#bill-attribution-input').value;
-  // //billAuthorLink.textContent = document.querySelector('select#bill-input-element');
-  // billAuthor.appendChild(billAuthorLink);
-  // billContentDiv.appendChild(contenttext0);
-  // billContentDiv.appendChild(billText);
-  // billContentDiv.appendChild(contenttext2);
-  // billContentDiv.appendChild(billAuthor);
-  // billContentDiv.appendChild(contenttext4);
-  //
-  // newbill.appendChild(billContentDiv);
-  //
-  // newbill.appendChild(text4);
+    owedToMe = owedToMe + parseInt(billAuthorLink.textContent);
+    console.log(owedToMe);
 
-  owedToMe = owedToMe + parseInt(billAuthorLink.textContent);
-  //owedToMe = billAuthorLink;
-  console.log(owedToMe);
-  // p = document.getElementById("personSelect");
-  // if(p.options[p.selectedIndex].value == 'You'){
-  //   owedToMe = owedToMe +
-  // }
-  each = owedToMe/ (whoOwesWhat.length + 1);
-  for(var i = 0; i < whoOwesWhat.length; i++){
-    whoOwesWhat[i] = whoOwesWhat[i] + each;
-    console.log('Your roommate, ' + who[i] + ', owes you ' + whoOwesWhat[i].toFixed(2) + ' dollars.');
-  }
-  return billContext;
+    each = owedToMe/ (whoOwesWhat.length + 1);
+    for(var i = 0; i < whoOwesWhat.length; i++){
+      whoOwesWhat[i] = each;
+      console.log('Your roommate, ' + who[i] + ', owes you ' + whoOwesWhat[i].toFixed(2) + ' dollars.');
+    }
+
+  return whoOwesWhat[0].toFixed(2);
 }
 
 //=====Erase Input=====
