@@ -1,6 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
+var bodyParser = require('body-parser');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var MongoClient = require('mongodb').MongoClient;
@@ -12,14 +13,14 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
-var port = process.env.PORT || 3002;
+var port = process.env.PORT || 3004;
 
-
-var mongoHost = process.env.MONGO_HOST;
-var mongoPort = process.env.MONGO_PORT || 27017;
-var mongoUser = process.env.MONGO_USER;
-var mongoPassword = process.env.MONGO_PASSWORD;
-var mongoDBName = process.env.MONGO_DB_NAME;
+//in theory these should be set as env vars but export isn't working bc flip isn't bash/....
+var mongoHost = "classmongo.engr.oregonstate.edu"; //= process.env.MONGO_HOST;
+var mongoPort = 27017; //process.env.MONGO_PORT || 27017;
+var mongoUser = "cs290_litzingj"; //process.env.MONGO_USER;
+var mongoPassword = "cs290_litzingj"; //process.env.MONGO_PASSWORD;
+var mongoDBName = "cs290_litzingj"; //process.env.MONGO_DB_NAME;
 
 var mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort}/${mongoDBName}`;
 var db = null;
@@ -32,6 +33,7 @@ app.get('/', function (req, res, next) {
 //##############################################################
 
 app.post('/addBill', function (req, res, next) {
+  console.log("/addBill");
   if (req.body && req.body.url && req.body.caption) {
     var collection = db.collection('bills');
     var bill = {
@@ -55,6 +57,7 @@ app.post('/addBill', function (req, res, next) {
 });
 
 app.post('/addPerson', function (req, res, next) {
+    console.log("/addPerson");
   if (req.body && req.body.url && req.body.caption) {
     var collection = db.collection('people');
     var person = {
