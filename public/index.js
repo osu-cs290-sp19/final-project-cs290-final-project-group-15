@@ -116,6 +116,11 @@ function acceptbillButtonClickListener(event) {
 
 acceptbillButton.addEventListener('click', acceptbillButtonClickListener);
 
+
+
+/*******************************************
+* Making a new person                      *
+********************************************/
 function createNewpersonElement() {
   var newperson = document.createElement('li');
   newperson.classList.add('in-sidebar.person');
@@ -127,7 +132,10 @@ function createNewpersonElement() {
   console.log(who);
   return newperson;
 }
-//build new bill
+
+/*******************************************
+* Creating a new bill                      *
+********************************************/
 function createNewbillElement() {
   var newbill = document.createElement('article');
   newbill.classList.add('bill');
@@ -177,7 +185,8 @@ function createNewbillElement() {
 
   newbill.appendChild(text4);
 
-  owedToMe = owedToMe + parseInt(billAuthorLink.textContent);
+
+  owedToMe = owedToMe + parseFloat(billAuthorLink.textContent);
   //owedToMe = billAuthorLink;
   console.log(owedToMe);
   // p = document.getElementById("personSelect");

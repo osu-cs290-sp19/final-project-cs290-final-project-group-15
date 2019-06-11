@@ -218,7 +218,9 @@ main {
   background-color: rgba(0, 0, 0, 0.85);
 }
 
-#create-bill-modal {
+/* create person modal */
+
+#create-person-modal {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -227,7 +229,50 @@ main {
   z-index: 1010;
   overflow: scroll;
 }
-#create-person-modal {
+
+.person-input-element {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.person-input-element label {
+  font-weight: 600;
+  flex: 1 75px;
+  margin-right: 10px;
+}
+
+.person-input-element input,
+.person-input-element textarea {
+  flex: 6 200px;
+  padding: 8px;
+  font-size: 20px;
+  border: 1px solid #aaa;
+}
+
+.person-input-element textarea {
+  min-height: 64px;
+}
+
+.person-modal-close-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.person-modal-body {
+  padding: 20px;
+}
+
+/* Create bill modal */
+
+#create-bill-modal {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -297,9 +342,11 @@ main {
   border: 1px solid #aaa;
 }
 
+
 .bill-input-element textarea {
   min-height: 64px;
 }
+
 
 .modal-footer {
   display: flex;

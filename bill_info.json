@@ -1,0 +1,20 @@
+
+{
+    "bills": [
+      {
+        "bill-text": "Electric (example)",
+        "bill-amount" : "500",
+        "bill-author": "500.00"
+      },
+      {
+        "bill-text": "Gas (example)",
+        "bill-amount" : "23",
+        "bill-author": "23.00"
+      },
+      {
+        "bill-text": "Water (example)",
+        "bill-amount" : "777",
+        "bill-author": "15.10"
+      }
+    ]
+}
