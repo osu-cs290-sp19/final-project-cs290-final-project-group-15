@@ -120,11 +120,16 @@ app.post('/addPerson', function (req, res, next) {
 //##############################################################
 
 
-app.get('/yourpage', function(req, res, next) {
-  console.log('--res: ' + res);
-  console.log('--req: ' + req);
-  res.status(200).sendFile(__dirname + '/public/yourpage.html');
-});
+// app.get('/yourpage', function(req, res, next) {
+//   console.log('--res: ' + res);
+//   console.log('--req: ' + req);
+//   res.status(200).sendFile(__dirname + '/public/yourpage.html');
+// });
+
+app.get('/clear', function(req, res, next) {
+  var billCollection = db.collection('bills');
+  billCollection.deleteMany({});
+})
 
 //GOES LAST
 app.get('*', function (req, res, next) {
