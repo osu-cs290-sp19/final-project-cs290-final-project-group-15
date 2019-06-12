@@ -1,10 +1,13 @@
 var http = require('http');
+var morgan = require('morgan');
 var fs = require('fs');
 var url = require('url');
 var bodyParser = require('body-parser');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var MongoClient = require('mongodb').MongoClient;
+
+var util = require('util');
 
 var app = express();
 
@@ -13,6 +16,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(morgan('standard'));
 
 
 var port = process.env.PORT || 3004;
@@ -29,7 +33,22 @@ var db = null;
 
 
 app.get('/', function (req, res, next) {
-  res.status(200).sendFile(__dirname + '/public/index.html');
+  console.log("loading home page");
+  console.log("nodemone");
+  var collection = db.collection('bills');
+
+  collection.find({}).toArray(function(err, bills) {
+    if (err) {
+      res.status(500).send({
+        error: "Error fetching bills from DB"
+      });
+    } else {
+      console.log(util.inspect(bills));
+      res.status(200).render('Home', {
+        bills: bills
+      });
+    }
+  });
 });
 
 //##############################################################
@@ -45,7 +64,8 @@ app.post('/addBill', function (req, res, next) {
       amount: req.body.amount,
       split: req.body.split
     };
-    console.log("bill: " + bill);
+    //console.log("bill: " + bill);
+
     collection.insertOne({
       description: req.body.description,
       amount: req.body.amount,
@@ -61,7 +81,7 @@ app.post('/addBill', function (req, res, next) {
         }
       }
     );
-    console.log("bills collection: " + collection);
+    //console.log("bills collection: " + collection);
   } else {
     res.status(400).send("Request needs a body with a description and amount");
   }
