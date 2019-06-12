@@ -1,6 +1,6 @@
 owedToMe = 0;
 whoOwesWhat = [0,0];
-who = ['That one lady', 'Creepy landlord'];
+who = ['Lane', 'Jaelyn', 'Ryan'];
 each = 0;
 
 var createpersonButton = document.getElementsByClassName('add-button')[0];
