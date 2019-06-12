@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Lickity-Split!</title>
+
+    <!-- This is a 3rd-party stylesheet to make available the font family to be used for this page ("Roboto"). -->
+
+<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- This 3rd-party stylesheet incorporates SVG icons from Font Awesome: http://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css" media="screen">
+
+    <script src="index.js" charset="utf-8" defer></script>
+
+  </head>
+
+  <body>
+
+    <header>
+      <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
+      <a href="#"><h1 class="site-title">Lickity-Split!</h1></a>
+
+      <nav class="navbar">
+        <ul class="navlist">
+          <li class="navitem navlink active"><a href="#">Home</a></li>
+          <li class="navitem navlink" id="yourpage"><a href="#">Your Page</a></li>
+
+          <!-- <li class="navitem navlink"><a href="#">About Us</a></li> -->
+          <li class="navitem navbar-search">
+            <input type="text" id="navbar-search-input" placeholder="Search...">
+            <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id = 'sidebar'>
+
+      <h2 class = 'in-sidebar sidebar-title'>People</h2>
+
+      <ul class = 'in-sidebar'>
+        <li class = 'in-sidebar person'><a>You</a></li>
+        <li class = 'in-sidebar person'><a>Lane</a></li>
+        <li class = 'in-sidebar person'><a>Jaelyn</a></li>
+        <li class = 'in-sidebar person'><a>Ryan</a></li>
+      </ul>
+
+        <button class="add-button">Add Person</button>
+
+    </div>
+
+    <main class="bill-container">
+      <h2>Bills Paid</h2>
+      {{{body}}}
+
+
+
+    </main>
+
+    <button type="button" id="create-bill-button"><i class="fas fa-file-invoice-dollar"></i></button>
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="create-bill-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>New Bill</h3>
+          <button type="button" class="modal-close-button">&times;</button>
+        </div>
+
+        <!-- Modal HTML -->
+
+        <div class="modal-body">
+          <div class="bill-input-element">
+            <label for="bill-text-input">What was the bill?</label>
+            <textarea id="bill-text-input"></textarea>
+          </div>
+          <div class="bill-input-element">
+            <label for="bill-attribution-input">How much was it?</label>
+            <input type="number" id="bill-attribution-input" step="0.01">
+          </div>
+          <div class="bill-input-element">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="modal-cancel-button">Cancel</button>
+          <button type="button" class="modal-accept-button">Create bill</button>
+        </div>
+
+      </div>
+    </div>
+
+<!-- This is the add person module. -->
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="create-person-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>New Person</h3>
+          <button type="button" class="person-modal-close-button">&times;</button>
+        </div>
+
+
+    <div class="person-modal-body">
+      <div class="person-input-element">
+        <label for="person-name-input">What is the new person's name?</label>
+        <textarea id="person-name-input"></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="person-modal-cancel-button">Cancel</button>
+      <button type="button" class="person-modal-accept-button">Create new person</button>
+    </div>
+
+  </div>
+</div>
+
+  </body>
+
+</html>
